@@ -23,6 +23,8 @@ jobs:
       # Set up the build engine for Docker to use
       - name: Set up Buildx
         uses: docker/setup-buildx-action@v1
+        with:
+          buildkitd-flags: --debug
       
       - name: Docker Login
         # You may pin to the exact commit or the version.
