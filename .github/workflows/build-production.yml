@@ -24,7 +24,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      # gather the name of the last version tag
+      # The pipeline is triggered by a tagged commit, we'll build the image and tag it by using the same tag as the push. 
+      # For example, if the commit is tagged with v1.0.0, we'll build the image contoso/website:v1.0.0
+      # Gather the latest push version tag
       - name: Fetch latest version
         id: fetch_version
         run: echo ::set-output name=TAG::${GITHUB_REF#refs/tags/}
@@ -54,6 +56,6 @@ jobs:
           context: .
           # Push is a shorthand for --output=type=registry
           push: true
-          # List of tags
+          # List of tags, we'll build the image and tag it by using the same tag as the push.
           tags: ${{secrets.ACR_NAME}}/contoso-website:latest,${{secrets.ACR_NAME}}/contoso-website:${{ steps.fetch_version.outputs.TAG }}
           
