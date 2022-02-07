@@ -1,7 +1,10 @@
+# Default values for contoso-website.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
 image:
-  repository: <acr-name>
+  registry: contosocontainerregistry13113.azurecr.io
   name: contoso-website
   tag: latest
-
+  
 dns:
-  name: 2993d0157aa646dc8e56.eastus.aksapp.io
+  name: b9837e87abde49e3b769.eastus.aksapp.io
